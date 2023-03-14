@@ -9,22 +9,31 @@ import starLogo from "../assets/star.png";
 import questionLogo from "../assets/anotherquestion.png";
 import cardLogo from "../assets/card.png";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+const baseFontSize = 18;
+
+const scaleFont = (size) => {
+  const ratio = size / baseFontSize;
+  const newSize = Math.round(ratio * width);
+  return newSize;
+};
+
 export default function PaymentScreen() {
   return (
     <View style={styles.FaqContainer}>
       <View style={styles.cardContainer}>
         <View style={styles.firstCard}>
-          <View style={styles.card}>
+          <View style={styles.cardFirst}>
             <View style={styles.vendorLogoContainer}>
               <Image source={vendorLogo} style={styles.vendorLogo} />
             </View>
             <Text style={styles.cardText}>Pay any vendor. Any invoice.</Text>
             <TouchableOpacity>
               <View style={styles.cardCont}>
-                <Text style={styles.invoiceText}>
-                  Submit new invoices
-                  <Image source={rightArrowLogo} style={styles.arrowLogo} />
-                </Text>
+                <Text style={styles.invoiceText}>Submit new invoices</Text>
+                <Image source={rightArrowLogo} style={styles.arrowLogo} />
               </View>
             </TouchableOpacity>
           </View>
@@ -37,8 +46,8 @@ export default function PaymentScreen() {
               <View style={styles.cardCont}>
                 <Text style={styles.invoiceTextMiddle}>
                   Check out our FAQs for common questions
-                  <Image source={rightArrowLogo} style={styles.arrowLogo} />
                 </Text>
+                <Image source={rightArrowLogo} style={styles.arrowLogoRight} />
               </View>
             </TouchableOpacity>
           </View>
@@ -56,10 +65,8 @@ export default function PaymentScreen() {
             </Text>
             <TouchableOpacity>
               <View style={styles.cardCont}>
-                <Text style={styles.invoiceTextBottom}>
-                  Activate Card
-                  <Image source={rightArrowLogo} style={styles.arrowLogo} />
-                </Text>
+                <Text style={styles.invoiceTextBottom}>Activate Card</Text>
+                <Image source={rightArrowLogo} style={styles.arrowLogoBottom} />
               </View>
             </TouchableOpacity>
           </View>
@@ -73,6 +80,22 @@ export default function PaymentScreen() {
 }
 
 const styles = StyleSheet.create({
+  cardFirst: {
+    backgroundColor: "#FFF8F3",
+    padding: 5,
+    paddingBottom: 10,
+    paddingTop: 20,
+    borderRadius: 10,
+    width: "50%",
+  },
+  card: {
+    padding: 5,
+    paddingBottom: 20,
+    paddingTop: 20,
+    borderRadius: 10,
+    marginLeft: 5,
+    width: "50%",
+  },
   FaqContainer: {
     width: "90%",
     marginTop: 50,
@@ -91,15 +114,11 @@ const styles = StyleSheet.create({
   },
   firstCard: {
     flexDirection: "row",
-    // paddingBottom: 30,
   },
   cardCont: {
     flexDirection: "row",
     marginTop: 5,
     alignItems: "center",
-    justifyContent: "space-between",
-
-    width: "90%",
   },
   vendorLogoContainer: {
     width: 50,
@@ -130,60 +149,74 @@ const styles = StyleSheet.create({
     height: 22,
   },
   cardText: {
-    fontSize: 23,
-    width: 200,
-    height: 60,
+    fontSize: scaleFont(0.9),
+
+ 
     color: "#070D59",
     fontWeight: 400,
     marginTop: 30,
   },
   cardTextBottom: {
-    fontSize: 20,
-    width: 190,
+    fontSize: scaleFont(0.9),
+
     color: "#070D59",
     fontWeight: 400,
     marginTop: 30,
   },
   invoiceText: {
-    fontSize: 15,
-    width: 180,
-    color: "#a9a9a9",
+    fontSize: scaleFont(0.75),
+
+    color: "#707070",
     fontWeight: "400",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    // marginTop: 10,
   },
   invoiceTextMiddle: {
-    fontSize: 15,
-    width: 180,
-    color: "#a9a9a9",
+    fontSize: scaleFont(0.75),
+
+    color: "#707070",
     fontWeight: "400",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: -10,
+    marginTop: 5,
   },
   invoiceTextBottom: {
-    fontSize: 16,
-    width: 180,
-    color: "#a9a9a9",
+    fontSize: scaleFont(0.75),
+  
+    color: "#707070",
     fontWeight: "400",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 0,
   },
   arrowLogo: {
-    // width:8,
-    // height:24,
-    marginLeft: 10,
+    width: 10,
+    height: 15,
+    marginTop: 2,
+    marginLeft: 7,
+  },
+  arrowLogoRight: {
+    width: 10,
+    height: 15,
+    marginTop: 30,
+    marginLeft: -24,
+  },
+  arrowLogoBottom: {
+    width: 10,
+    height: 15,
+
+    marginLeft: 5,
   },
   cardLogoCont: {
     justifyContent: "flex-end",
     alignItems: "center",
-    // backgroundColor:"red",
-    width: "45%",
+    width: "50%",
   },
   cardLogo: {
     width: 105,
     height: 66,
+  },
+  card1: {
+    width: "50%",
   },
 });

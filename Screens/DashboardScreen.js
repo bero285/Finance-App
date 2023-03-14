@@ -2,10 +2,22 @@ import { StatusBar } from "expo-status-bar";
 import { TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View, Image } from "react-native";
 import warningLogo from "../assets/warning.png";
+import { Dimensions } from "react-native";
+import { ScaledSheet } from "react-native-size-matters";
+const { width, height } = Dimensions.get("window");
+const baseFontSize = 20;
+
+const scaleFont = (size) => {
+  const ratio = size / baseFontSize;
+  const newSize = Math.round(ratio * width);
+  return newSize;
+};
+
 export default function DashboardScreen() {
   return (
     <View style={styles.furhterContainer}>
       <Text style={styles.headText}>Dashboard</Text>
+
       <View style={styles.statement}>
         <View style={styles.statementContainer}>
           <Text style={styles.statementText}>Statement</Text>
@@ -47,15 +59,13 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   furhterContainer: {
     width: "90%",
-    // flex: 1,
-    height:410,
- 
+
     marginTop: 20,
   },
   headText: {
-    fontSize: 30,
+    fontSize: scaleFont(1.5),
     color: "#070D59",
-    fontWeight: "400",
+    fontWeight: "500",
     padding: 7,
   },
   statement: {
@@ -67,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   statementText: {
-    fontSize: 24,
+    fontSize: scaleFont(1.2),
     color: "#070D59",
     fontWeight: "500",
   },
@@ -75,14 +85,14 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   amountText: {
-    fontSize: 25,
+    fontSize: scaleFont(1.2),
     color: "#070D59",
     fontWeight: "500",
   },
   creditText: {
-    fontSize: 18,
-    color: "#a9a9a9",
-    fontWeight: "300",
+    fontSize: scaleFont(0.81),
+    color: "#707070",
+    fontWeight: "400",
     justifyContent: "center",
   },
   warningLogo: {
@@ -102,13 +112,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   ReamountText: {
-    fontSize: 25,
+    fontSize: scaleFont(1.2),
     color: "#1AAE5F",
     fontWeight: "500",
   },
   baseRateCont: {
     width: "100%",
-    height: 50,
+  
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
@@ -122,33 +132,33 @@ const styles = StyleSheet.create({
   },
   limitContainer: {
     width: "100%",
-    height: 80,
     backgroundColor: "#F1F3F8",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     borderRadius: 5,
     padding: 7,
+    paddingTop: 18,
+    paddingBottom: 18,
     marginTop: 10,
   },
   limitText: {
-    width: "60%",
-    fontSize: 18,
-    color: "#a9a9a9",
-    fontWeight: "300",
+    width: "50%",
+    fontSize: scaleFont(0.82),
+    color: "#999999",
+    fontWeight: "400",
     justifyContent: "center",
   },
   limitButton: {
     backgroundColor: "white",
-    width: 130,
-    height: 40,
+    padding: 10,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
   },
   limmitButtonText: {
     color: "#0066FF",
-    fontSize: 17,
+    fontSize: scaleFont(0.7),
     fontWeight: "500",
   },
 });

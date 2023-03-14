@@ -5,16 +5,16 @@ import OrderScreen from "./OrderScreen";
 import FaqScreen from "./FaqScreen";
 import { ScrollView } from "react-native";
 import PaymentScreen from "./PaymentScreen";
-import ActiveOrderScreen from "./ActiveOrderScreen"
+import ActiveOrderScreen from "./ActiveOrderScreen";
 export default function AllScreens() {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <DashboardScreen />
         <OrderScreen />
         <PaymentScreen />
         <FaqScreen />
-       <ActiveOrderScreen/>
+        <ActiveOrderScreen />
       </View>
     </ScrollView>
   );
@@ -27,6 +27,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // justifyContent: "center",
     marginTop: 2,
-
   },
 });

@@ -1,13 +1,22 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native";
+import { Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+const baseFontSize = 18;
+const scaleFont = (size) => {
+  const ratio = size / baseFontSize;
+  const newSize = Math.round(ratio * width);
+  return newSize;
+};
 
 export default function OrderScreen() {
   return (
     <View style={styles.orderContainer}>
       <View style={styles.orders}>
         <Text style={styles.ordersText}>Orders</Text>
-        <TouchableOpacity style={styles.ordersButton}>
+        <TouchableOpacity>
           <Text style={styles.ordersButtonText}>View All</Text>
         </TouchableOpacity>
       </View>
@@ -30,7 +39,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "90%",
     marginTop: 20,
-    
   },
   orders: {
     width: "100%",
@@ -38,14 +46,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   ordersText: {
-    fontSize: 23,
+    fontSize: scaleFont(1.2),
     color: "#070D59",
     fontWeight: "500",
   },
   ordersButtonText: {
-    fontSize: 18,
-    color: "#a9a9a9",
-    fontWeight: "300",
+    fontSize: scaleFont(0.81),
+    color: "#707070",
+    fontWeight: "400",
     justifyContent: "center",
   },
   condition: {

@@ -7,6 +7,17 @@ import rightArrowLogo from "../assets/rightArrow.png";
 import vendorLogo from "../assets/vendor.png";
 import questionLogo from "../assets/anotherquestion.png";
 import { TouchableOpacity } from "react-native";
+import { Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+const baseFontSize = 18;
+
+const scaleFont = (size) => {
+  const ratio = size / baseFontSize;
+  const newSize = Math.round(ratio * width);
+  return newSize;
+};
+
 export default function PaymentScreen() {
   return (
     <View style={styles.paymentContainer}>
@@ -24,7 +35,6 @@ export default function PaymentScreen() {
 
         <Text style={styles.paymentButtonTextGreen}>Active</Text>
       </View>
-     
     </View>
   );
 }
@@ -33,7 +43,7 @@ const styles = StyleSheet.create({
   paymentContainer: {
     width: "90%",
     marginTop: 50,
-    alignSelf:"center",
+    alignSelf: "center",
   },
   payment: {
     width: "100%",
@@ -41,14 +51,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   paymentText: {
-    fontSize: 23,
+    fontSize: scaleFont(1),
     color: "#070D59",
     fontWeight: "500",
   },
   paymentButtonText: {
-    fontSize: 18,
-    color: "#a9a9a9",
-    fontWeight: "300",
+    fontSize: scaleFont(0.81),
+    color: "#707070",
+    fontWeight: "400",
     justifyContent: "center",
   },
   paymentButtonTextGreen: {
@@ -62,7 +72,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: 60,
   },
   active: {
     justifyContent: "space-between",
@@ -112,23 +121,22 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 21,
-    width: 180,
+
     color: "#070D59",
     fontWeight: 400,
     marginTop: 40,
   },
   invoiceText: {
     fontSize: 16,
-    width: 180,
+
     color: "#a9a9a9",
     fontWeight: "400",
     justifyContent: "center",
     alignItems: "center",
-    marginTop:10,
+    marginTop: 10,
   },
   arrowLogo: {
     // width:8,
     // height:24,
-    
   },
 });

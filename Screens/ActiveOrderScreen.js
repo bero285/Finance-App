@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
-import OrderComponent from "../myComponents/OrderComponent";
-import ActiveOrders from "../myComponents/ActiveOrders";
+import OrderComponent from "../component/OrderComponent";
+import ActiveOrders from "../component/ActiveOrders";
 import React, { useEffect, useState } from "react";
 import {
   useQuery,
@@ -29,14 +29,12 @@ export default function ActiveOrdersScreen() {
     return <Text>Error has occured</Text>;
   }
 
-
-
   return (
     <View style={styles.Container}>
       <ActiveOrders />
-      {info.slice(0,3).map((dat) => (
+      {info.slice(0, 3).map((dat, index) => (
         <OrderComponent
-       
+          key={index}
           name={dat.name}
           price={dat.price}
           myImage={dat.logo}
@@ -52,7 +50,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "column",
     marginTop: 20,
-    paddingBottom:30
+    paddingBottom: 30,
   },
-
 });

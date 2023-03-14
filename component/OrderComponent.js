@@ -2,6 +2,16 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ChaseLogo from "../assets/chaseBank.png";
+import { Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
+const baseFontSize = 18;
+
+const scaleFont = (size) => {
+  const ratio = size / baseFontSize;
+  const newSize = Math.round(ratio * width);
+  return newSize;
+};
 export default function ActiveOrders({ myImage, name, active, price }) {
   return (
     <View style={styles.Container}>
@@ -48,20 +58,20 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   bottomText: {
-    fontSize: 16,
+    fontSize: scaleFont(1),
     color: "#1AAE5F",
   },
   bottomTextSecond: {
-    fontSize: 16,
-    color: "#808080",
+    fontSize: scaleFont(0.8),
+    color: "#707070",
   },
   bottomTextLast: {
-    fontSize: 16,
-    color: "#808080",
+    fontSize: scaleFont(0.8),
+    color: "#707070",
     alignSelf: "flex-end",
   },
   headText: {
-    fontSize: 19,
+    fontSize: scaleFont(0.9),
     color: "#4d4d6b",
   },
 });

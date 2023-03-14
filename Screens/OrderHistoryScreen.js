@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
-import OrderComponent from "../myComponents/OrderComponent";
+import OrderComponent from "../component/OrderComponent";
 
 import React, { useEffect, useState } from "react";
 import {
@@ -44,8 +44,13 @@ export default function OrderHisotryScreen() {
           <Text style={styles.componentText}>Close</Text>
         </TouchableOpacity>
       </ScrollView>
-      {info.map((dat) => (
-        <OrderComponent name={dat.name} price={dat.price} myImage={dat.logo} />
+      {info.map((dat, index) => (
+        <OrderComponent
+          key={index}
+          name={dat.name}
+          price={dat.price}
+          myImage={dat.logo}
+        />
       ))}
     </View>
   );
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 15,
     color: "#0066FF",
-    height: 45,
+
     borderBottomColor: "#0066FF",
     borderBottomWidth: 3,
     fontWeight: "400",

@@ -1,7 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Dimensions } from "react-native";
 
+const { width, height } = Dimensions.get("window");
+const baseFontSize = 18;
+
+const scaleFont = (size) => {
+  const ratio = size / baseFontSize;
+  const newSize = Math.round(ratio * width);
+  return newSize;
+};
 export default function ActiveOrders() {
   return (
     <View style={styles.Container}>
@@ -21,14 +30,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   ActiveText: {
-    fontSize: 23,
+    fontSize: scaleFont(1.1),
     color: "#070D59",
     fontWeight: "500",
   },
   ActiveButtonText: {
-  fontSize: 18,
-  color: "#a9a9a9",
-  fontWeight: "300",
+  fontSize: scaleFont(0.8),
+  color: "#707070",
+  fontWeight: "400",
   justifyContent: "center",
   }
 });
